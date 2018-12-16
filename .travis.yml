@@ -6,5 +6,8 @@ brancher:
   only:
     - "dev"
     - "master"
+install:
+  - "npm install -g codecov"
 script:
   - "yarn run cover"
+  - "codecov"

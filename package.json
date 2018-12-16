@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "mocha": "mocha test/mocha.js",
-    "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha test/mocha.js"
+    "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha --reporter test/mocha.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
