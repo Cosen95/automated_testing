@@ -1,0 +1,12 @@
+{
+  "name": "automated_testing",
+  "version": "1.0.0",
+  "description": "前端自动化测试",
+  "main": "index.js",
+  "repository": "git@github.com:Jack-cool/automated_testing.git",
+  "author": "fengshuan <1263215592@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.10.0"
+  }
+}
