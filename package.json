@@ -7,11 +7,13 @@
   "author": "fengshuan <1263215592@qq.com>",
   "license": "MIT",
   "scripts": {
-    "mocha": "mocha"
+    "mocha": "mocha test/mocha.js",
+    "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha test/mocha.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.10.0",
+    "istanbul": "1.0.0-alpha.2",
     "mocha": "^5.2.0"
   }
 }
