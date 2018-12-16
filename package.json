@@ -11,6 +11,7 @@
     "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha --reporter test/mocha.js"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "chai": "^4.2.0",
     "eslint": "^5.10.0",
     "istanbul": "1.0.0-alpha.2",
