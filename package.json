@@ -8,13 +8,27 @@
   "license": "MIT",
   "scripts": {
     "mocha": "mocha test/mocha.js",
-    "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha --reporter test/mocha.js"
+    "cover": "istanbul cover D:/automated_testing/node_modules/mocha/bin/_mocha --reporter test/mocha.js",
+    "jest": "jest test/ui.test.js --coverage"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   },
   "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
     "chai": "^4.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
     "istanbul": "1.0.0-alpha.2",
-    "mocha": "^5.2.0"
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0",
+    "react-test-renderer": "^16.6.3",
+    "sinon": "^7.2.2"
   }
 }
