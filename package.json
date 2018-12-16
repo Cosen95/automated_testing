@@ -6,8 +6,12 @@
   "repository": "git@github.com:Jack-cool/automated_testing.git",
   "author": "fengshuan <1263215592@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "mocha": "mocha"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^5.10.0"
+    "eslint": "^5.10.0",
+    "mocha": "^5.2.0"
   }
 }
