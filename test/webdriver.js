@@ -21,7 +21,9 @@ describe('百度首页UI测试', function() {
                 expect(title).to.equal('百度一下，你就知道');
                 done();
             });
-        });
+        }).catch(e => {
+            console.log(e);
+        })
     });
 
     it('should have button value "百度一下', done => {
@@ -30,6 +32,8 @@ describe('百度首页UI测试', function() {
                 expect(val).to.equal('百度一下');
                 done()
             })
+        }).catch(e => {
+            console.log(e);
         })
     })
 
