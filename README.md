@@ -143,6 +143,86 @@ language:
 install:
   - npm install -g codecov
 script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter test/mocha.js
   - codecov
+
+```
+
+#### benchmark
+性能测试
+
+1.安装
+`yarn add benchmark`
+2.基本使用
+```
+var suite = new Benchmark.Suite;
+
+// add tests
+suite.add('RegExp#test', function() {
+  /o/.test('Hello World!');
+})
+.add('String#indexOf', function() {
+  'Hello World!'.indexOf('o') > -1;
+})
+.add('String#match', function() {
+  !!'Hello World!'.match(/o/);
+})
+// add listeners
+.on('cycle', function(event) {
+  console.log(String(event.target));
+})
+.on('complete', function() {
+  console.log('Fastest is ' + this.filter('fastest').map('name'));
+})
+// run async
+.run({ 'async': true });
+
+```
+
+### jest
+Jest 是Facebook的一个专门进行Javascript单元测试的工具，集成了 Mocha，chai，jsdom，sinon等功能,适合React全家桶使用，具有零配置、内置代码覆盖率、强大的Mocks等特点。
+1.安装
+`yarn add --dev jest`
+
+#### Testing React Apps
+1.如果你已经有一个应用，你仅需要安装一些包来使他们运行起来(不使用Create React App)。 我们使用babel-jest包和babel-preset-react，从而在测试环境中转换我们代码。
+`yarn add --dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer`
+2.DOM测试
+如果你想要断言和操纵您渲染的组件你可以使用 Enzyme 或 React 的 TestUtils。本例中我们使用 Enzyme。
+`yarn add enzyme enzyme-adapter-react-16 --dev`
+3.Full DOM Rendering
+基本使用
+```
+import React from 'react';
+import sinon from 'sinon';
+import { expect } from 'chai';
+import { mount } from 'enzyme';
+
+import Foo from './Foo';
+
+describe('<Foo />', () => {
+  it('allows us to set props', () => {
+    const wrapper = mount(<Foo bar="baz" />);
+    expect(wrapper.props().bar).to.equal('baz');
+    wrapper.setProps({ bar: 'foo' });
+    expect(wrapper.props().bar).to.equal('foo');
+  });
+
+  it('simulates click events', () => {
+    const onButtonClick = sinon.spy();
+    const wrapper = mount((
+      <Foo onButtonClick={onButtonClick} />
+    ));
+    wrapper.find('button').simulate('click');
+    expect(onButtonClick).to.have.property('callCount', 1);
+  });
+
+  it('calls componentDidMount', () => {
+    sinon.spy(Foo.prototype, 'componentDidMount');
+    const wrapper = mount(<Foo />);
+    expect(Foo.prototype.componentDidMount).to.have.property('callCount', 1);
+    Foo.prototype.componentDidMount.restore();
+  });
+});
 
 ```
