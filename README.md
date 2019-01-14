@@ -189,6 +189,7 @@ Jest 是Facebook的一个专门进行Javascript单元测试的工具，集成了
 `yarn add --dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer`
 2.DOM测试
 如果你想要断言和操纵您渲染的组件你可以使用 Enzyme 或 React 的 TestUtils。本例中我们使用 Enzyme。
+enzyme文档地址：http://airbnb.io/enzyme/
 `yarn add enzyme enzyme-adapter-react-16 --dev`
 3.Full DOM Rendering
 基本使用
@@ -226,3 +227,58 @@ describe('<Foo />', () => {
 });
 
 ```
+
+### selenium-webdriver
+Selenium是一个浏览器自动化库。Selenium最常用于测试Web应用程序，它可以用于任何需要与浏览器自动交互的任务。
+1.安装
+`yarn add selenium-webdriver`
+2.基本使用
+`test/webdriver.js`
+```
+const { expect } = require('chai');
+const webdriver = require('selenium-webdriver');
+const By = webdriver.By;
+const chromeDriver = require('selenium-webdriver/chrome');
+
+describe('百度首页UI测试', function() {
+    this.timeout(50000);
+
+    let driver;
+
+    before(() => {
+        driver = new webdriver.Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(new chromeDriver.Options().addArguments(['headless']))
+        .build();
+    });
+
+    it('should have title "百度一下，你就知道"', done => {
+        driver.get('https://www.baidu.com').then(() => {
+            driver.getTitle().then(title => {
+                expect(title).to.equal('百度一下，你就知道');
+                done();
+            });
+        }).catch(e => {
+            console.log(e);
+        })
+    });
+
+    it('should have button value "百度一下', done => {
+        driver.findElement(By.id('su')).then(button => {
+            button.getAttribute('value').then(val => {
+                expect(val).to.equal('百度一下');
+                done()
+            })
+        }).catch(e => {
+            console.log(e);
+        })
+    })
+
+    after(() => {
+        driver.quit();
+    })
+})
+
+```
+3.Chromedriver配置环境变量填坑
+https://blog.csdn.net/qq_41429288/article/details/80472064
